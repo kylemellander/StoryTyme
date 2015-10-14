@@ -1,0 +1,22 @@
+<%= form_for @sentence do |f| %>
+  <input type="hidden" name="sentence[story_id]" value=<%= @story.id %>>
+
+  <div class="form-group">
+    <%= f.label :content, "Use the above image to write the next sentence of the story." %>
+    <%= f.text_field :content %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :username %>
+    <%= f.text_field :username %>
+  </div>
+
+  <div class="form-group">
+    <label for="sentence[image_id]">Choose a picture for the next leg of the story:</label>
+    <% Image.random_five.each do |image| %>
+      <input type="radio" name="sentence[image_id]" value=<%= image.id %>><%= image_tag(image.url, class:"icon-image") %>
+    <% end %>
+  </div>
+
+  <%= f.submit %>
+<% end %>

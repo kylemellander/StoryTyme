@@ -1,0 +1,21 @@
+<h2>Create Your Own Story</h2>
+
+<%= form_for @story do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+
+  <%= f.label :subtitle %>
+  <%= f.text_field :subtitle %>
+
+  <label for="sentence">Start your story with a sentence</label>
+  <input type="text" name="story[sentence]" id="sentence">
+
+  <label for="username">Your Name:</label>
+  <input type="text" name="story[username]" id="username">
+
+  <% Image.random_five.each do |image| %>
+    <input type="radio" name="story[image]" value="<%= image.id %>"><%= image_tag(image.url, class:"icon-image") %>
+  <% end %>
+
+  <%= f.submit %>
+<% end %>
