@@ -1,0 +1,11 @@
+<h1><%= @story.title %></h1>
+<h2><%= @story.subtitle %></h2>
+
+<% i=1 %>
+<p class="center"><%= @story.sentences[0].content%> - <%= @story.sentences[0].username %></p>
+<% while i < @story.sentences.length do %>
+<p class="center"> <%= image_tag(@story.sentences[i-1].image.url, class:'icon-image')%><br><%= @story.sentences[i].content%> - <%= @story.sentences[i].username %></p>
+<% i = i+1 %>
+<% end %>
+
+<%= link_to "Back to Normal View", @story %>

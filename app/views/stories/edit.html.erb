@@ -1,0 +1,13 @@
+<h1>Edit <%= @story.title %></h1>
+
+
+<%= form_for @story do |f| %>
+<%= render 'layouts/errors', object: @story %>
+<%= f.label :title %>
+<%= f.text_field :title %>
+
+<%= f.label :subtitle %>
+<%= f.text_field :subtitle %>
+
+<%= f.submit %>
+<% end %>

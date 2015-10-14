@@ -1,9 +1,8 @@
 <h2>Create Your Own Story</h2>
 
-
 <%= form_for @story do |f| %>
-  <%= render 'layouts/errors', object: @story %>
   <%= render 'layouts/errors', object: @sentence %>
+  <%= render 'layouts/errors', object: @story %>
   <%= f.label :title %>
   <%= f.text_field :title %>
 
@@ -27,7 +26,6 @@
       <input type="radio" name="sentence[image_id]" value=<%= image.id %>><%= image_tag(image.url, class:"icon-image") %>
       <% end %>
     </div>
-
 
   <%= f.submit %>
   <% end %>

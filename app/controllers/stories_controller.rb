@@ -40,6 +40,20 @@ class StoriesController < ApplicationController
       end
   end
 
+  def full_view
+    @story = Story.find(params[:id]) 
+
+  end
+
+  def destroy
+    @story = Story.find(params[:id])
+    @story.sentences.each do |sentence|
+      sentence.destroy
+    end
+    @story.destroy
+    redirect_to stories_path
+  end
+
 
 
   private
@@ -49,7 +63,7 @@ class StoriesController < ApplicationController
   end
 
   def sentence_params
-    params.require(:sentence).permit(:username, :content, :image_id, :story_id)
+    params.require(:sentence).permit(:username, :content, :image_id)
   end
 
 end

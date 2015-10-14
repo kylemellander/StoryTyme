@@ -1,7 +1,7 @@
 class SentenceValidator < ActiveModel::Validator
   def validate(record)
-    if record.content[-1, 1] != "."
-      record.errors[:base] << "Your sentence must end in a period."
+    if record.content[-1, 1] != "." && record.content[-1, 1] != "!" && record.content[-1, 1] != "?"
+      record.errors[:base] << "Your sentence must end in a period, exclamation mark, or question mark."
     end
   end
 end

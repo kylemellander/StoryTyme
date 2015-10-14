@@ -3,6 +3,6 @@
 <%= link_to 'Start a New Story', new_story_path %>
 <ul>
   <% @stories.each do |story| %>
-    <li><%= link_to story.title, story %></li>
+    <li><%= link_to story.title, story %> <%= link_to "Edit", edit_story_path(story) %> <%= link_to "Delete", story_path(story), data: {method: 'delete', confirm: "Are You Sure?"} %></li>
   <% end %>
 </ul>

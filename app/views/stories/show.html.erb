@@ -1,6 +1,6 @@
 <h1><%= @story.title %></h1>
 <h2><%= @story.subtitle %></h2>
-
+<%= link_to "View Full View", "/stories/#{@story.id}/full-view" %>
 
 <% @story.sentences.each do |sentence| %>
   <p> <%=sentence.content%> </p>
