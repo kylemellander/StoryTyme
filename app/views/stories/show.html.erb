@@ -8,5 +8,8 @@
 
 <p> By: <%= @story.all_authors %></p>
 
-<div class="current-image"><%= image_tag(@story.sentences[-1].image.url, class:'icon-image')%></div>
+<% if @story.sentences.length > 0 %>
+  <div class="current-image"><%= image_tag(@story.sentences[-1].image.url, class:'icon-image')%></div>
+<% end %>
+
 <%= render "sentences/form" %>

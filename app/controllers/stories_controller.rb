@@ -11,25 +11,17 @@ class StoriesController < ApplicationController
 
   def new
     @story = Story.new
+    @sentence = Sentence.new
   end
 
   def create
-    image = Image.find(params[:story][:image].to_i)
     @story = Story.new(story_params)
-    if @story.save
-      sentence = Sentence.new(image_id: params[:story][:image].to_i,
-                              content: params[:story][:sentence],
-                              story_id: @story.id,
-                              username: params[:story][:username])
-      if sentence.save
-        redirect_to @story
-      else
-        flash[:alert] = ""
-        sentence.errors.full_messages.each do |message|
-          flash[:alert] += message
-        end
-        redirect_to new_sentence_path(@story)
-      end
+    @sentence = Sentence.new(sentence_params)
+    if @story.valid? && @sentence.valid?
+      @story.save
+      @sentence.story_id = @story.id
+      @sentence.save
+      redirect_to @story
     else
       render :new
     end
@@ -54,6 +46,10 @@ class StoriesController < ApplicationController
 
   def story_params
     params.require(:story).permit(:title, :subtitle)
+  end
+
+  def sentence_params
+    params.require(:sentence).permit(:username, :content, :image_id, :story_id)
   end
 
 end

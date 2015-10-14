@@ -1,11 +1,13 @@
 class SentencesController < ApplicationController
 
   def create
-    image = Image.find(params[:sentence][:image_id].to_i)
-    story = Story.find(params[:sentence][:story_id].to_i)
+    @story = Story.find(params[:sentence][:story_id].to_i)
     @sentence = Sentence.new(sentence_params)
-    @sentence.save
-      redirect_to story
+    if @sentence.save
+      redirect_to @story
+    else
+      render "stories/show"
+    end
   end
 
 private

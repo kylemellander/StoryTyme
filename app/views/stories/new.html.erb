@@ -1,21 +1,34 @@
 <h2>Create Your Own Story</h2>
 
+
 <%= form_for @story do |f| %>
+  <%= render 'layouts/errors', object: @story %>
+  <%= render 'layouts/errors', object: @sentence %>
   <%= f.label :title %>
   <%= f.text_field :title %>
 
   <%= f.label :subtitle %>
   <%= f.text_field :subtitle %>
 
-  <label for="sentence">Start your story with a sentence</label>
-  <input type="text" name="story[sentence]" id="sentence">
+  <%= form_for @sentence do |f| %>
+    <div class="form-group">
+      <%= f.label :content, "Write the first sentence of your story." %>
+      <%= f.text_field :content %>
+    </div>
 
-  <label for="username">Your Name:</label>
-  <input type="text" name="story[username]" id="username">
+    <div class="form-group">
+      <%= f.label :username %>
+      <%= f.text_field :username %>
+    </div>
 
-  <% Image.random_five.each do |image| %>
-    <input type="radio" name="story[image]" value="<%= image.id %>"><%= image_tag(image.url, class:"icon-image") %>
-  <% end %>
+    <div class="form-group">
+      <label for="sentence[image_id]">Choose a picture for the next leg of the story:</label>
+      <% Image.random_five.each do |image| %>
+      <input type="radio" name="sentence[image_id]" value=<%= image.id %>><%= image_tag(image.url, class:"icon-image") %>
+      <% end %>
+    </div>
+
 
   <%= f.submit %>
+  <% end %>
 <% end %>

@@ -1,3 +1,5 @@
+<%= render 'layouts/errors', object: @sentence %>
+
 <%= form_for @sentence do |f| %>
   <input type="hidden" name="sentence[story_id]" value=<%= @story.id %>>
 
