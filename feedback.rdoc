@@ -1,0 +1,23 @@
+HI KYLE. ITS US, RYAN AND LEAH.
+
+README - does not exist!
+
+Specs - 11 pass, 4 fail! We give you a grade of C+
+
+Application logic - Not sure what they mean by this?
+
+User friendly - I think so! We couldn't get very far...When you click the "start a new story" link, the form seems to be missing the part where you can choose a picture (it only shows the label but no input). Thus the user gets an error upon submit saying "image can't be blank".
+
+Refactoring opportunities -
+  - You have several different forms chilling on various layout pages. You may consider making individual form erbs for each of those and then rendering them when needed (like on stories#new and stories#edit)
+  - Looks good otherwise we thinks.
+
+Stand out features -
+  - styling is cute
+  - validating fields is cool!
+
+Improvement possibilities -
+  - fix the issue with adding an image
+  - maybe make the form a bit larger, with some spacing
+
+WE LIKE IT
